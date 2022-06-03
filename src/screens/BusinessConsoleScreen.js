@@ -1,11 +1,10 @@
 import { View, Text } from "react-native";
 import React from "react";
-import SearchBar from "../components/SearchBar";
 
-export default function SearchScreen() {
+export default function BusinessConsoleScreen() {
   return (
     <View>
-      <SearchBar />
+      <Text>BusinessConsoleScreen</Text>
     </View>
   );
 }

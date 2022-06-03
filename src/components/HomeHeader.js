@@ -3,7 +3,7 @@ import React from "react";
 import { colors, parameters } from "../global/styles";
 import { Icon, withBadge } from "@rneui/base";
 
-export default function HomeHeader() {
+export default function HomeHeader({ navigation }) {
   const BadgeIcon = withBadge(0)(Icon);
   return (
     <View style={styles.header}>
@@ -19,6 +19,9 @@ export default function HomeHeader() {
           name="menu"
           color={colors.cardBackground}
           size={32}
+          onPress={() => {
+            navigation.toggleDrawer();
+          }}
         />
       </View>
 

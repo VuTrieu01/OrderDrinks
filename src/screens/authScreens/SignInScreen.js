@@ -70,7 +70,7 @@ export default function SignInScreen({ navigation }) {
           buttonStyle={parameters.styleButton}
           titleStyle={parameters.titleButton}
           onPress={() => {
-            navigation.navigate("ClientTabs");
+            navigation.navigate("DrawerNavigator");
           }}
         />
       </View>

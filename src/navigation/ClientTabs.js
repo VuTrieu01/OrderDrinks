@@ -13,8 +13,14 @@ const BottomTab = createBottomTabNavigator();
 export default function ClientTabs() {
   return (
     <BottomTab.Navigator
-      tabBarOptions={{
-        activeTintColor: colors.buttons,
+      screenOptions={{
+        tabBarActiveTintColor: colors.buttons,
+        tabBarStyle: [
+          {
+            display: "flex",
+          },
+          null,
+        ],
       }}
     >
       <BottomTab.Screen
