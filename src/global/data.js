@@ -2,30 +2,50 @@ export const filterData = [
   {
     image: require("../../assets/images/shopping-bag.png"),
     text: "Pick-up",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
   },
   {
     image: require("../../assets/images/soft-drink.png"),
     text: "Soft Drinks",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
   },
   {
     image: require("../../assets/images/bread.png"),
     text: "Bakery Items",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
   },
   {
     image: require("../../assets/images/fast-food.png"),
     text: "Fast Foods",
+    image_url:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
   },
   {
     image: require("../../assets/images/deals.png"),
     text: "Deals",
+    image_url:
+      "https://img.dothi.net/2020/01/06/LeS0RvL7/quan-ca-phe-1-df33.jpg",
   },
   {
     image: require("../../assets/images/coffee.png"),
     text: "Coffee & Tea",
+    image_url:
+      "https://img.dothi.net/2020/01/06/LeS0RvL7/quan-ca-phe-1-df33.jpg",
   },
   {
     image: require("../../assets/images/desserts.png"),
     text: "Desserts",
+    image_url:
+      "https://img.dothi.net/2020/01/06/LeS0RvL7/quan-ca-phe-1-df33.jpg",
+  },
+  {
+    image: require("../../assets/images/desserts.png"),
+    text: "Desserts",
+    image_url:
+      "https://img.dothi.net/2020/01/06/LeS0RvL7/quan-ca-phe-1-df33.jpg",
   },
 ];
 
@@ -51,7 +71,8 @@ export const localItem = [
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
       {
-        name: "Big Cafe, price: 30.30",
+        name: "Big Cafe",
+        price: 30.3,
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
@@ -72,13 +93,14 @@ export const localItem = [
     foodType: "Cafe",
     productData: [
       {
-        name: "Cafe",
+        name: "Cafe1",
         price: 29.3,
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
       {
-        name: "Big Cafe, price: 30.30",
+        name: "Big Cafe1",
+        price: 30.3,
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },

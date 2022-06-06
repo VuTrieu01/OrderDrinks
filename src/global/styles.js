@@ -11,6 +11,7 @@ export const colors = {
   headerText: "white",
   lightGreen: "#66DF48",
   red: "red",
+  black: "#000",
 };
 
 export const parameters = {

@@ -10,11 +10,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
-import HeaderTabs from "../components/HeaderTabs";
 import { SafeAreaView } from "react-native-safe-area-context";
-import SearchBar from "../components/SearchBar";
-import Categories from "../components/Categories";
-import RestaurantItem, { localRestaurants } from "../components/RestaurantItem";
 import { Icon } from "@rneui/base";
 import HomeHeader from "../components/HomeHeader";
 import { colors } from "../global/styles";

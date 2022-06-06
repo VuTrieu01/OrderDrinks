@@ -7,6 +7,7 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  Keyboard,
 } from "react-native";
 import React, { useState, useRef } from "react";
 import { colors } from "../global/styles";
@@ -14,6 +15,7 @@ import { Icon } from "@rneui/base";
 import * as Animatable from "react-native-animatable";
 import { useNavigation } from "@react-navigation/native";
 import { filterData } from "../global/data";
+import filter from "lodash/filter";
 // import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 // import Ionicons from "react-native-vector-icons/Ionicons";
 // import AntDesign from "react-native-vector-icons/AntDesign";
@@ -25,6 +27,20 @@ export default function SearchBar() {
   const [textInputFocussed, setTextInputFocussed] = useState(true);
   const textInput = useRef(0);
   const [data, setData] = useState([...filterData]);
+  const contains = (name, query) => {
+    if (name.includes(query)) {
+      return true;
+    }
+    return false;
+  };
+
+  const handleSearch = (text) => {
+    const dataS = filter(filterData, (userSearch) => {
+      return contains(userSearch.text, text);
+    });
+
+    setData([...dataS]);
+  };
 
   return (
     <View style={{ alignItems: "center" }}>
@@ -45,12 +61,15 @@ export default function SearchBar() {
         <View style={styles.modal}>
           <View style={styles.view1}>
             <View style={styles.textInput}>
-              <Animatable.View>
+              <Animatable.View
+                animation={textInputFocussed ? "fadeInRight" : "fadeInLeft"}
+                duration={400}
+              >
                 <Icon
                   name={textInputFocussed ? "arrow-back" : "search"}
                   onPress={() => {
                     if (textInputFocussed) setModalVisible(false);
-                    setTextInputFocussed(false);
+                    setTextInputFocussed(true);
                   }}
                   style={styles.icon}
                   type="material"
@@ -62,9 +81,19 @@ export default function SearchBar() {
                 placeholder=""
                 autoFocus={false}
                 ref={textInput}
+                onFocus={() => {
+                  setTextInputFocussed(true);
+                }}
+                onBlur={() => {
+                  setTextInputFocussed(false);
+                }}
+                onChangeText={handleSearch}
               />
 
-              <Animatable.View>
+              <Animatable.View
+                animation={textInputFocussed ? "fadeInLeft" : ""}
+                duration={400}
+              >
                 <Icon
                   name={textInputFocussed ? "cancel" : null}
                   onPress={() => {
@@ -85,10 +114,13 @@ export default function SearchBar() {
               <TouchableOpacity
                 onPress={() => {
                   Keyboard.dismiss;
-                  navigator.navigate("SearchScreen", { item: item.text });
+                  navigation.navigate("SearchResultScreen", {
+                    item: item.text,
+                  });
                   setModalVisible(false);
                   setTextInputFocussed(true);
                 }}
+                key={index}
               >
                 <View style={styles.view2}>
                   <Text style={{ color: colors.grey2, fontSize: 15 }}>

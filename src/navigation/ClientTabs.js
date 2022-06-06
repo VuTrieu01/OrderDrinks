@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
@@ -7,6 +6,7 @@ import MyOrderScreen from "../screens/MyOrderScreen";
 import MyAccount from "../screens/MyAccount";
 import { Icon } from "@rneui/base";
 import { colors } from "../global/styles";
+import ClientStack from "./ClientStack";
 
 const BottomTab = createBottomTabNavigator();
 

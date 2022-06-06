@@ -5,9 +5,10 @@ import {
 } from "@react-navigation/stack";
 import SignInWelcome from "../screens/authScreens/SignInWelcome";
 import SignInScreen from "../screens/authScreens/SignInScreen";
-import ClientTabs from "./ClientTabs";
 import MapScreen from "../screens/MapScreen";
 import DrawerNavigator from "./DrawerNavigator";
+import SearchResultScreen from "../screens/SearchResultScreen";
+import InfoShopScreen from "../screens/InfoShopScreen";
 
 const Auth = createStackNavigator();
 
@@ -45,6 +46,22 @@ export default function AuthStack() {
           headerShown: false,
           ...TransitionPresets.RevealFromBottomAndroid,
         }}
+      />
+      <Auth.Screen
+        name="SearchResultScreen"
+        component={SearchResultScreen}
+        options={() => ({
+          headerShown: false,
+          ...TransitionPresets.RevealFromBottomAndroid,
+        })}
+      />
+      <Auth.Screen
+        name="InfoShopScreen"
+        component={InfoShopScreen}
+        options={() => ({
+          headerShown: false,
+          ...TransitionPresets.RevealFromBottomAndroid,
+        })}
       />
     </Auth.Navigator>
   );
