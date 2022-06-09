@@ -7,8 +7,21 @@ import {
 } from "@react-navigation/drawer";
 import { Avatar, Button, Icon } from "@rneui/base";
 import { colors } from "../global/styles";
+import { useNavigation } from "@react-navigation/native";
+import { auth } from "../../firebase";
 
 export default function DrawerContent(props) {
+  const navigation = useNavigation();
+
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        navigation.replace("SignInWelcome");
+      })
+      .catch((error) => alert(error.message));
+  };
+
   return (
     <View style={styles.container}>
       <DrawerContentScrollView {...props}>
@@ -52,7 +65,7 @@ export default function DrawerContent(props) {
                   fontSize: 14,
                 }}
               >
-                noname@gmail.com
+                {auth.currentUser?.email}
               </Text>
             </View>
           </View>
@@ -182,6 +195,7 @@ export default function DrawerContent(props) {
             size={size}
           />
         )}
+        onPress={handleSignOut}
       />
     </View>
   );

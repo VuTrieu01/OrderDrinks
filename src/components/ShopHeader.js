@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  ImageBackground,
-  Animated,
-} from "react-native";
+import { StyleSheet, View, ImageBackground, Animated } from "react-native";
 import React, { useState, useEffect } from "react";
 import { localItem } from "../global/data";
 import { colors } from "../global/styles";
@@ -48,7 +42,6 @@ export default function ShopHeader({ navigation, id }) {
       <ImageBackground
         style={styles.container}
         source={{ uri: localItem[id].image_url }}
-        imageStyle={styles.image}
       >
         <View style={styles.view1}>
           <View style={styles.view2}>
@@ -92,10 +85,6 @@ export default function ShopHeader({ navigation, id }) {
 const styles = StyleSheet.create({
   container: {
     height: 150,
-  },
-  image: {
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
   },
   view1: {
     flexDirection: "row",

@@ -12,6 +12,7 @@ export const colors = {
   lightGreen: "#66DF48",
   red: "red",
   black: "#000",
+  yellow: "gold",
 };
 
 export const parameters = {

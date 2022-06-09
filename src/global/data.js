@@ -67,12 +67,14 @@ export const localItem = [
       {
         name: "Cafe",
         price: 29.3,
+        details: "content1",
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
       {
         name: "Big Cafe",
         price: 30.3,
+        details: "content2",
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
@@ -95,15 +97,109 @@ export const localItem = [
       {
         name: "Cafe1",
         price: 29.3,
+        details: "content3",
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
       {
         name: "Big Cafe1",
         price: 30.3,
+        details: "content4",
         image:
           "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
       },
     ],
+  },
+];
+
+export const menuData = [
+  {
+    title: "TRÀ",
+    special: false,
+  },
+  {
+    title: "SỬA CHUA",
+    special: false,
+  },
+  {
+    title: "CÀ PHÊ ÔNG BẦU",
+    special: false,
+  },
+  {
+    title: "THẾ GIỚI CÀ PHÊ",
+    special: false,
+  },
+  {
+    title: "LATTE ĐÁ",
+    special: false,
+  },
+  {
+    title: "MÓN ĐẶC BIỆT",
+    special: false,
+  },
+  {
+    title: "ĐÁ XAY",
+    special: false,
+  },
+];
+
+export const specialData = [
+  {
+    title: "ƯU ĐÃI GIỚI HẠN",
+  },
+  {
+    title: "KHUYẾN MÃI",
+  },
+];
+
+export const menuTra = [
+  {
+    title: "Trà Đào",
+  },
+  {
+    title: "Trà Vải",
+  },
+  {
+    title: "Trà Sữa Trân Châu",
+  },
+  {
+    title: "Hồng Trà Milk Foam",
+  },
+  {
+    title: "Trà Ổi Hồng Hạt Boba",
+  },
+  {
+    title: "Trà Việt Quất Hạt Boba",
+  },
+];
+
+export const menu = [
+  {
+    key: 1,
+    title: "TRÀ",
+  },
+  {
+    key: 2,
+    title: "SỬA CHUA",
+  },
+  {
+    key: 3,
+    title: "CÀ PHÊ ÔNG BẦU",
+  },
+  {
+    key: 4,
+    title: "THẾ GIỚI CÀ PHÊ",
+  },
+  {
+    key: 5,
+    title: "LATTE ĐÁ",
+  },
+  {
+    key: 6,
+    title: "MÓN ĐẶC BIỆT",
+  },
+  {
+    key: 7,
+    title: "ĐÁ XAY",
   },
 ];

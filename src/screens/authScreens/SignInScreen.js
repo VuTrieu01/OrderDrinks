@@ -1,15 +1,50 @@
-import { View, Text, StyleSheet, TextInput } from "react-native";
-import React, { useState, useRef } from "react";
+import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../../components/Header";
 import { colors, parameters, title } from "../../global/styles";
 import * as Animatable from "react-native-animatable";
 import { Icon, Button, SocialIcon } from "@rneui/base";
+import { Formik } from "formik";
+import { auth } from "../../../firebase";
 
 export default function SignInScreen({ navigation }) {
   const [textPassword, setTextPassword] = useState(false);
 
   const textEmailRef = useRef(1);
   const textPassRef = useRef(2);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.replace("DrawerNavigator");
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  const handleLogin = (data) => {
+    const { password, email } = data;
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredentials) => {
+        const user = userCredentials.user;
+        console.log("Logged in with: ", user.email);
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  // const handleSignUp = (data) => {
+  //   const { password, email } = data;
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((userCredentials) => {
+  //       const user = userCredentials.user;
+  //       console.log("Registered in with: ", user.email);
+  //     })
+  //     .catch((error) => alert(error.message));
+  // };
+
   return (
     <View style={styles.container}>
       <Header title="TÀI KHOẢN" type="arrow-left" navigation={navigation} />
@@ -20,60 +55,74 @@ export default function SignInScreen({ navigation }) {
         <Text style={styles.text}>Vui lòng nhập email và mật khẩu</Text>
         <Text style={styles.text}>đã đăng ký với tài khoản của bạn</Text>
       </View>
-      <View>
-        <View>
-          <TextInput
-            style={styles.txtIpEmail}
-            placeholder="Email"
-            ref={textEmailRef}
-          />
-        </View>
-        <View style={styles.txtIpPass}>
-          <Animatable.View
-            animation={textPassword ? "" : "fadeInLeft"}
-            duration={400}
-          >
-            <Icon
-              name="lock"
-              iconStyle={{ color: colors.grey3 }}
-              type="material"
-            />
-          </Animatable.View>
 
-          <TextInput
-            style={{ width: "80%" }}
-            placeholder="Mật khẩu"
-            ref={textPassRef}
-            onFocus={() => {
-              setTextPassword(false);
-            }}
-            onBlur={() => {
-              setTextPassword(true);
-            }}
-          />
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values) => {
+          handleLogin(values);
+        }}
+      >
+        {(props) => (
+          <View>
+            <View>
+              <View>
+                <TextInput
+                  style={styles.txtIpEmail}
+                  placeholder="Email"
+                  ref={textEmailRef}
+                  onChangeText={props.handleChange("email")}
+                  value={props.values.email}
+                />
+              </View>
+              <View style={styles.txtIpPass}>
+                <Animatable.View
+                  animation={textPassword ? "" : "fadeInLeft"}
+                  duration={400}
+                >
+                  <Icon
+                    name="lock"
+                    iconStyle={{ color: colors.grey3 }}
+                    type="material"
+                  />
+                </Animatable.View>
 
-          <Animatable.View
-            animation={textPassword ? "" : "fadeInLeft"}
-            duration={400}
-          >
-            <Icon
-              name="visibility-off"
-              iconStyle={{ color: colors.grey3 }}
-              type="material"
-            />
-          </Animatable.View>
-        </View>
-      </View>
-      <View style={{ marginHorizontal: 20, marginVertical: 30 }}>
-        <Button
-          title="Đăng nhập"
-          buttonStyle={parameters.styleButton}
-          titleStyle={parameters.titleButton}
-          onPress={() => {
-            navigation.navigate("DrawerNavigator");
-          }}
-        />
-      </View>
+                <TextInput
+                  style={{ width: "80%" }}
+                  placeholder="Mật khẩu"
+                  ref={textPassRef}
+                  onFocus={() => {
+                    setTextPassword(false);
+                  }}
+                  onBlur={() => {
+                    setTextPassword(true);
+                  }}
+                  onChangeText={props.handleChange("password")}
+                  value={props.values.password}
+                />
+
+                <Animatable.View
+                  animation={textPassword ? "" : "fadeInLeft"}
+                  duration={400}
+                >
+                  <Icon
+                    name="visibility-off"
+                    iconStyle={{ color: colors.grey3 }}
+                    type="material"
+                  />
+                </Animatable.View>
+              </View>
+            </View>
+            <View style={{ marginHorizontal: 20, marginVertical: 30 }}>
+              <Button
+                title="Đăng nhập"
+                buttonStyle={parameters.styleButton}
+                titleStyle={parameters.titleButton}
+                onPress={props.handleSubmit}
+              />
+            </View>
+          </View>
+        )}
+      </Formik>
       <View style={{ alignItems: "center" }}>
         <Text style={{ ...styles.text, textDecorationLine: "underline" }}>
           Quên mật khẩu?

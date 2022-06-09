@@ -1,10 +1,18 @@
-import { ScrollView, StyleSheet, Text, View, Dimensions } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 import React, { useState } from "react";
 import ShopHeader from "../components/ShopHeader";
 import { localItem } from "../global/data";
 import { colors } from "../global/styles";
 import { Icon } from "@rneui/base";
 import { TabBar, TabView } from "react-native-tab-view";
+import MenuScreen from "./shopTabs/MenuScreen";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const initialLayout = SCREEN_WIDTH;
@@ -12,6 +20,7 @@ const initialLayout = SCREEN_WIDTH;
 export default function InfoShopScreen({ navigation, route }) {
   const { id, name } = route.params;
 
+  //routes Main
   const [routes] = useState([
     { key: "first", title: "MENU" },
     { key: "second", title: "INFO" },
@@ -35,6 +44,10 @@ export default function InfoShopScreen({ navigation, route }) {
 
   const UpdateRoute1 = () => {
     return <View></View>;
+  };
+
+  const menuPressed = () => {
+    navigation.navigate("MenuProduct");
   };
 
   return (
@@ -104,7 +117,20 @@ export default function InfoShopScreen({ navigation, route }) {
             tabBarPosition="top"
           />
         </View>
+
+        {index === 0 && <MenuScreen onPress={menuPressed} />}
       </ScrollView>
+
+      <TouchableOpacity>
+        <View style={styles.view11}>
+          <View style={styles.view12}>
+            <Text style={styles.text13}>Xem giỏ hàng</Text>
+            <View style={styles.view13}>
+              <Text style={styles.text13}>0</Text>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -170,7 +196,9 @@ const styles = StyleSheet.create({
     height: 50,
     backgroundColor: colors.buttons,
     alignContent: "center",
+    justifyContent: "center",
     marginBottom: 0,
+    paddingHorizontal: 10,
   },
   view12: {
     flexDirection: "row",
@@ -179,10 +207,22 @@ const styles = StyleSheet.create({
   },
   view13: {
     borderWidth: 1,
-    marginRight: 10,
     borderColor: colors.cardBackground,
     borderRadius: 6,
     paddingBottom: 2,
+  },
+  view14: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 10,
+    backgroundColor: colors.buttons,
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  view15: {
+    marginTop: 5,
+    marginBottom: 20,
   },
   text1: {
     color: colors.lightGreen,
@@ -256,6 +296,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     color: colors.cardBackground,
+  },
+  text14: {
+    fontWeight: "bold",
+    marginLeft: 40,
+    color: colors.cardBackground,
+    fontSize: 18,
   },
   tab: {
     paddingTop: 0,

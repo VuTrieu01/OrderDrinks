@@ -9,6 +9,7 @@ import MapScreen from "../screens/MapScreen";
 import DrawerNavigator from "./DrawerNavigator";
 import SearchResultScreen from "../screens/SearchResultScreen";
 import InfoShopScreen from "../screens/InfoShopScreen";
+import MenuProduct from "../screens/MenuProduct";
 
 const Auth = createStackNavigator();
 
@@ -58,6 +59,14 @@ export default function AuthStack() {
       <Auth.Screen
         name="InfoShopScreen"
         component={InfoShopScreen}
+        options={() => ({
+          headerShown: false,
+          ...TransitionPresets.RevealFromBottomAndroid,
+        })}
+      />
+      <Auth.Screen
+        name="MenuProduct"
+        component={MenuProduct}
         options={() => ({
           headerShown: false,
           ...TransitionPresets.RevealFromBottomAndroid,
