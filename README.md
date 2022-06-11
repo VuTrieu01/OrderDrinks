@@ -1,2 +1,2 @@
 # OrderDrinks
-A food delivery app built with react 
+A order drink app built with react native
