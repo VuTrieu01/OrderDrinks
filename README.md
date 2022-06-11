@@ -14,7 +14,9 @@ or
     yarn install
   
 </div>
+
 # Running
+
 <div>
   
     npm start
