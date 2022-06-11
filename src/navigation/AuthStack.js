@@ -5,11 +5,7 @@ import {
 } from "@react-navigation/stack";
 import SignInWelcome from "../screens/authScreens/SignInWelcome";
 import SignInScreen from "../screens/authScreens/SignInScreen";
-import MapScreen from "../screens/MapScreen";
-import DrawerNavigator from "./DrawerNavigator";
-import SearchResultScreen from "../screens/SearchResultScreen";
-import InfoShopScreen from "../screens/InfoShopScreen";
-import MenuProduct from "../screens/MenuProduct";
+import SignUpScreen from "../screens/authScreens/SignUpScreen";
 
 const Auth = createStackNavigator();
 
@@ -33,44 +29,12 @@ export default function AuthStack() {
         }}
       />
       <Auth.Screen
-        name="DrawerNavigator"
-        component={DrawerNavigator}
+        name="SignUpScreen"
+        component={SignUpScreen}
         options={{
           headerShown: false,
           ...TransitionPresets.RevealFromBottomAndroid,
         }}
-      />
-      <Auth.Screen
-        name="MapScreen"
-        component={MapScreen}
-        options={{
-          headerShown: false,
-          ...TransitionPresets.RevealFromBottomAndroid,
-        }}
-      />
-      <Auth.Screen
-        name="SearchResultScreen"
-        component={SearchResultScreen}
-        options={() => ({
-          headerShown: false,
-          ...TransitionPresets.RevealFromBottomAndroid,
-        })}
-      />
-      <Auth.Screen
-        name="InfoShopScreen"
-        component={InfoShopScreen}
-        options={() => ({
-          headerShown: false,
-          ...TransitionPresets.RevealFromBottomAndroid,
-        })}
-      />
-      <Auth.Screen
-        name="MenuProduct"
-        component={MenuProduct}
-        options={() => ({
-          headerShown: false,
-          ...TransitionPresets.RevealFromBottomAndroid,
-        })}
       />
     </Auth.Navigator>
   );

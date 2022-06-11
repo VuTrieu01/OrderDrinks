@@ -1,13 +1,16 @@
 import { View, Text, StyleSheet, TextInput, Alert } from "react-native";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import Header from "../../components/Header";
 import { colors, parameters, title } from "../../global/styles";
 import * as Animatable from "react-native-animatable";
 import { Icon, Button, SocialIcon } from "@rneui/base";
 import { Formik } from "formik";
 import { auth } from "../../../firebase";
+import { SignInContext } from "../../contexts/authContext";
 
 export default function SignInScreen({ navigation }) {
+  const { dispatchSignedIn } = useContext(SignInContext);
+
   const [textPassword, setTextPassword] = useState(false);
 
   const textEmailRef = useRef(1);
@@ -16,7 +19,10 @@ export default function SignInScreen({ navigation }) {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        navigation.replace("DrawerNavigator");
+        dispatchSignedIn({
+          type: "UPDATE_SIGN_IN",
+          payload: { userToken: "signed-in" },
+        });
       }
     });
 
@@ -34,23 +40,9 @@ export default function SignInScreen({ navigation }) {
       .catch((error) => alert(error.message));
   };
 
-  // const handleSignUp = (data) => {
-  //   const { password, email } = data;
-  //   auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then((userCredentials) => {
-  //       const user = userCredentials.user;
-  //       console.log("Registered in with: ", user.email);
-  //     })
-  //     .catch((error) => alert(error.message));
-  // };
-
   return (
     <View style={styles.container}>
-      <Header title="TÀI KHOẢN" type="arrow-left" navigation={navigation} />
-      <View>
-        <Text style={title}>Đăng nhập</Text>
-      </View>
+      <Header title="ĐĂNG NHẬP" type="arrow-left" navigation={navigation} />
       <View style={{ alignItems: "center", marginVertical: 10 }}>
         <Text style={styles.text}>Vui lòng nhập email và mật khẩu</Text>
         <Text style={styles.text}>đã đăng ký với tài khoản của bạn</Text>
@@ -160,6 +152,9 @@ export default function SignInScreen({ navigation }) {
           title="Đăng kí"
           buttonStyle={styles.createButton}
           titleStyle={styles.titleButton}
+          onPress={() => {
+            navigation.navigate("SignUpScreen");
+          }}
         />
       </View>
     </View>

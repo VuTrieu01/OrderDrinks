@@ -4,10 +4,10 @@
     "slug": "OrderDrinks",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icons/left-arrow.png",
+    "icon": "./assets/coffee-cup.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/icons/left-arrow.png",
+      "image": "./assets/coffee-cup.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,16 +16,24 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "YOUR_GOOGLE_API_KEY"
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icons/left-arrow.png",
+        "foregroundImage": "./assets/coffee-cup.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_API_KEY"
+        }
       }
     },
     "web": {
-      "favicon": "./assets/icons/left-arrow.png"
+      "favicon": "./assets/coffee-cup.png"
     }
   }
 }

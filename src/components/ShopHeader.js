@@ -4,7 +4,7 @@ import { localItem } from "../global/data";
 import { colors } from "../global/styles";
 import { Icon } from "@rneui/base";
 
-export default function ShopHeader({ navigation, id }) {
+export default function ShopHeader({ navigation, image_url }) {
   const index2 = 10;
   const currentValue = new Animated.Value(1);
 
@@ -39,10 +39,7 @@ export default function ShopHeader({ navigation, id }) {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={styles.container}
-        source={{ uri: localItem[id].image_url }}
-      >
+      <ImageBackground style={styles.container} source={{ uri: image_url }}>
         <View style={styles.view1}>
           <View style={styles.view2}>
             <Icon

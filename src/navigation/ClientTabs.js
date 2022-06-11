@@ -1,12 +1,12 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import SearchScreen from "../screens/SearchScreen";
 import MyOrderScreen from "../screens/MyOrderScreen";
 import MyAccount from "../screens/MyAccount";
 import { Icon } from "@rneui/base";
 import { colors } from "../global/styles";
 import ClientStack from "./ClientStack";
+import ClientHome from "./ClientHome";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -24,11 +24,11 @@ export default function ClientTabs() {
       }}
     >
       <BottomTab.Screen
-        name="Home"
-        component={Home}
+        name="ClientHome"
+        component={ClientHome}
         options={{
           headerShown: false,
-          tabBarLabel: "Home",
+          tabBarLabel: "Trang chủ",
           tabBarIcon: ({ color, size }) => (
             <Icon name="home" type="material" color={color} size={size} />
           ),
@@ -36,11 +36,11 @@ export default function ClientTabs() {
       />
 
       <BottomTab.Screen
-        name="SearchScreen"
-        component={SearchScreen}
+        name="ClientStack"
+        component={ClientStack}
         options={{
           headerShown: false,
-          tabBarLabel: "Search",
+          tabBarLabel: "Tìm kiếm",
           tabBarIcon: ({ color, size }) => (
             <Icon name="search" type="material" color={color} size={size} />
           ),
@@ -52,7 +52,7 @@ export default function ClientTabs() {
         component={MyOrderScreen}
         options={{
           headerShown: false,
-          tabBarLabel: "MyOrder",
+          tabBarLabel: "Giỏ hàng",
           tabBarIcon: ({ color, size }) => (
             <Icon name="view-list" type="material" color={color} size={size} />
           ),
@@ -64,7 +64,7 @@ export default function ClientTabs() {
         component={MyAccount}
         options={{
           headerShown: false,
-          tabBarLabel: "MyAccount",
+          tabBarLabel: "Tài khoản",
           tabBarIcon: ({ color, size }) => (
             <Icon name="person" type="material" color={color} size={size} />
           ),
