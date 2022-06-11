@@ -7,6 +7,8 @@ import SmallMenu, {
   RouteSmallMenu4,
   RouteSmallMenu5,
   RouteSmallMenu6,
+  RouteSmallMenu7,
+  RouteSmallMenu8,
 } from "./shopTabs/SmallMenu";
 import { colors } from "../global/styles";
 import { menu } from "../global/data";
@@ -14,11 +16,11 @@ import { Icon } from "@rneui/base";
 import { TabBar, TabView } from "react-native-tab-view";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
-const initialLayout = SCREEN_WIDTH;
 
 export default function MenuProduct({ navigation, route }) {
   const [routes] = useState(menu);
   const [index, setIndex] = useState(0);
+  const productData = route.params.productData;
 
   const renderTabBar = (props) => (
     <TabBar
@@ -34,19 +36,39 @@ export default function MenuProduct({ navigation, route }) {
   const renderScreen = ({ route }) => {
     switch (route.key) {
       case 1:
-        return <SmallMenu name={navigation} />;
+        return <SmallMenu navigation={navigation} productData={productData} />;
       case 2:
-        return <RouteSmallMenu1 name={navigation} />;
+        return (
+          <RouteSmallMenu1 navigation={navigation} productData={productData} />
+        );
       case 3:
-        return <RouteSmallMenu2 name={navigation} />;
+        return (
+          <RouteSmallMenu2 navigation={navigation} productData={productData} />
+        );
       case 4:
-        return <RouteSmallMenu3 name={navigation} />;
+        return (
+          <RouteSmallMenu3 navigation={navigation} productData={productData} />
+        );
       case 5:
-        return <RouteSmallMenu4 name={navigation} />;
+        return (
+          <RouteSmallMenu4 navigation={navigation} productData={productData} />
+        );
       case 6:
-        return <RouteSmallMenu5 name={navigation} />;
+        return (
+          <RouteSmallMenu5 navigation={navigation} productData={productData} />
+        );
       case 7:
-        return <RouteSmallMenu6 name={navigation} />;
+        return (
+          <RouteSmallMenu6 navigation={navigation} productData={productData} />
+        );
+      case 8:
+        return (
+          <RouteSmallMenu7 navigation={navigation} productData={productData} />
+        );
+      case 9:
+        return (
+          <RouteSmallMenu8 navigation={navigation} productData={productData} />
+        );
       default:
         return null;
     }

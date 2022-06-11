@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import ShopHeader from "../components/ShopHeader";
-import { localItem } from "../global/data";
 import { colors } from "../global/styles";
 import { Icon } from "@rneui/base";
 import { TabBar, TabView } from "react-native-tab-view";
@@ -18,14 +17,17 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 const initialLayout = SCREEN_WIDTH;
 
 export default function InfoShopScreen({ navigation, route }) {
-  const { id, name } = route.params;
+  const image_url = route.params.image_url;
+  const name = route.params.name;
+  const averageReviews = route.params.averageReviews;
+  const numberOfReview = route.params.numberOfReview;
+  const farAway = route.params.farAway;
 
   //routes Main
   const [routes] = useState([
     { key: "first", title: "MENU" },
-    { key: "second", title: "INFO" },
-    { key: "third", title: "REVIEWS" },
-    { key: "fourth", title: "GALLERY" },
+    { key: "second", title: "THÔNG TIN" },
+    { key: "third", title: "BÌNH LUẬN" },
   ]);
 
   const [index, setIndex] = useState(0);
@@ -46,27 +48,30 @@ export default function InfoShopScreen({ navigation, route }) {
     return <View></View>;
   };
 
-  const menuPressed = () => {
-    navigation.navigate("MenuProduct");
-  };
+  // const menuPressed = () => {
+  //   navigation.navigate("MenuProduct", {
+  //     dinkType: route.params.dinkType,
+  //     productData: route.params.productData,
+  //   });
+  // };
 
   return (
     <View style={styles.container}>
       <ScrollView>
         <View>
-          <ShopHeader id={id} navigation={navigation} />
-          {localItem[id].discount && (
+          <ShopHeader image_url={image_url} navigation={navigation} />
+          {/* {localItem[id].discount && (
             <View style={styles.view1}>
               <Text style={styles.text1}>
                 GET {localItem[id].discount} % OFF ON FOOD TOTAL
               </Text>
             </View>
-          )}
+          )} */}
 
           <View style={styles.view2}>
             <View style={styles.view3}>
-              <Text style={styles.text2}>{localItem[id].name}</Text>
-              <Text style={styles.text3}>{localItem[id].foodType}</Text>
+              <Text style={styles.text2}>{name}</Text>
+              <Text style={styles.text3}></Text>
 
               <View style={styles.view4}>
                 <Icon
@@ -75,35 +80,33 @@ export default function InfoShopScreen({ navigation, route }) {
                   color={colors.grey3}
                   size={15}
                 />
-                <Text style={styles.text4}>{localItem[id].averageReviews}</Text>
-                <Text style={styles.text5}>
-                  ({localItem[id].numberOfReview}+)
-                </Text>
-                <Icon
+                <Text style={styles.text4}>{averageReviews}</Text>
+                <Text style={styles.text5}>({numberOfReview}+)</Text>
+                {/* <Icon
                   name="map-marker"
                   type="material-community"
                   color={colors.grey3}
                   size={15}
                 />
-                <Text style={styles.text5}>{localItem[id].farAway} away</Text>
+                <Text style={styles.text5}>{localItem[id].farAway} phút</Text> */}
               </View>
             </View>
 
             <View style={styles.view5}>
-              <Text style={styles.view6}>Collect</Text>
+              <Text style={styles.view6}>Thời gian</Text>
               <View style={styles.view7}>
-                <Text style={styles.text7}>{localItem[id].collectTime}</Text>
-                <Text style={styles.text8}>min</Text>
+                <Text style={styles.text7}>{farAway}</Text>
+                <Text style={styles.text8}>phút</Text>
               </View>
             </View>
 
-            <View style={styles.view8}>
+            {/* <View style={styles.view8}>
               <Text style={styles.text6}>Delivery</Text>
               <View style={styles.view9}>
                 <Text style={styles.text9}>{localItem[id].deliveryTime}</Text>
                 <Text style={styles.text11}>min</Text>
               </View>
-            </View>
+            </View> */}
           </View>
         </View>
 
@@ -118,7 +121,16 @@ export default function InfoShopScreen({ navigation, route }) {
           />
         </View>
 
-        {index === 0 && <MenuScreen onPress={menuPressed} />}
+        {index === 0 && (
+          <MenuScreen
+            navigation={navigation}
+            drinkItem={route.params.dinkType}
+            productData={route.params.productData}
+            name={name}
+            location={route.params.location}
+            courier={route.params.courier}
+          />
+        )}
       </ScrollView>
 
       <TouchableOpacity>
@@ -170,8 +182,8 @@ const styles = StyleSheet.create({
     color: colors.grey1,
   },
   view7: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     alignItems: "center",
     borderRadius: 20,
     justifyContent: "space-around",
@@ -267,7 +279,7 @@ const styles = StyleSheet.create({
   text8: {
     fontSize: 13,
     color: colors.black,
-    marginBottom: 5,
+    // marginBottom: 5,
   },
   text9: {
     fontSize: 15,
@@ -319,7 +331,7 @@ const styles = StyleSheet.create({
     color: colors.cardBackground,
   },
   tabStyle: {
-    width: SCREEN_WIDTH / 4,
+    width: SCREEN_WIDTH / 3,
     maxHeight: 45,
   },
 });

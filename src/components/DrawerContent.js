@@ -1,5 +1,5 @@
 import { View, Text, Linking, StyleSheet } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -7,17 +7,21 @@ import {
 } from "@react-navigation/drawer";
 import { Avatar, Button, Icon } from "@rneui/base";
 import { colors } from "../global/styles";
-import { useNavigation } from "@react-navigation/native";
 import { auth } from "../../firebase";
+import { SignInContext } from "../contexts/authContext";
+import { images } from "../constants";
 
 export default function DrawerContent(props) {
-  const navigation = useNavigation();
+  const { dispatchSignedIn } = useContext(SignInContext);
 
   const handleSignOut = () => {
     auth
       .signOut()
       .then(() => {
-        navigation.replace("SignInWelcome");
+        dispatchSignedIn({
+          type: "UPDATE_SIGN_IN",
+          payload: { userToken: null },
+        });
       })
       .catch((error) => alert(error.message));
   };
@@ -44,9 +48,7 @@ export default function DrawerContent(props) {
               rounded
               avatarStyle={styles.avatar}
               size={75}
-              source={{
-                uri: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-              }}
+              source={images.avatar_4}
             />
 
             <View style={{ marginLeft: 10 }}>
@@ -57,7 +59,7 @@ export default function DrawerContent(props) {
                   fontSize: 18,
                 }}
               >
-                No name
+                Trieu
               </Text>
               <Text
                 style={{

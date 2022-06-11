@@ -8,12 +8,16 @@ import { Icon } from "@rneui/base";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function SearchResultScreen({ navigation, route }) {
+  const drinkList = localItem.filter((a) =>
+    a.dinkType.includes(route.params.item)
+  );
+
   return (
     <View style={styles.container}>
       <View>
         <FlatList
           style={{ backgroundColor: colors.cardBackground }}
-          data={localItem}
+          data={drinkList}
           keyExtractor={(_, index) => index}
           renderItem={({ item, index }) => (
             <SearchResultCard
@@ -28,8 +32,15 @@ export default function SearchResultScreen({ navigation, route }) {
               productData={item.productData}
               onPressShopCard={() => {
                 navigation.navigate("InfoShopScreen", {
-                  id: index,
+                  image_url: item.image_url,
                   name: item.name,
+                  averageReviews: item.averageReviews,
+                  numberOfReview: item.numberOfReview,
+                  farAway: item.farAway,
+                  dinkType: item.dinkType,
+                  productData: item.productData,
+                  location: item.location,
+                  courier: item.courier,
                 });
               }}
             />
@@ -55,7 +66,7 @@ export default function SearchResultScreen({ navigation, route }) {
                 }}
               />
               <Text style={styles.listHeader}>
-                {localItem.length} kết quả cho {route.params.item}
+                {drinkList.length} kết quả cho {route.params.item}
               </Text>
             </View>
           }

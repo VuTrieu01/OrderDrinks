@@ -22,12 +22,16 @@ import CountDown from "react-native-countdown-component";
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
 export default function Home({ navigation }) {
-  const [activeTab, setActiveTab] = useState("Delivery");
+  // const [activeTab, setActiveTab] = useState("Delivery");
   const [indexCheck, setIndexCheck] = useState(0);
+  const [listItem, setListItem] = useState("Trà");
+
+  const listDrink = localItem.filter((a) => a.dinkType.includes(listItem));
+
   return (
     <View style={styles.container}>
       <HomeHeader navigation={navigation} />
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           alignSelf: "center",
@@ -49,9 +53,9 @@ export default function Home({ navigation }) {
           setActiveTab={setActiveTab}
           navigation={navigation}
         />
-      </View>
+      </View> */}
       <ScrollView>
-        <View style={styles.filterView}>
+        {/* <View style={styles.filterView}>
           <View style={styles.addressView}>
             <View
               style={{
@@ -92,7 +96,7 @@ export default function Home({ navigation }) {
               size={26}
             />
           </View>
-        </View>
+        </View> */}
 
         <View style={styles.categoriesView}>
           <Text style={styles.categoriesText}>Loại</Text>
@@ -109,6 +113,7 @@ export default function Home({ navigation }) {
               <Pressable
                 onPress={() => {
                   setIndexCheck(index);
+                  setListItem(item.text);
                 }}
               >
                 <View
@@ -144,7 +149,7 @@ export default function Home({ navigation }) {
           />
         </View>
 
-        <View style={styles.categoriesView}>
+        {/* <View style={styles.categoriesView}>
           <Text style={styles.categoriesText}>Giao hàng miễn phí</Text>
         </View>
         <View>
@@ -186,9 +191,9 @@ export default function Home({ navigation }) {
               </View>
             )}
           />
-        </View>
+        </View> */}
 
-        <View style={styles.categoriesView}>
+        {/* <View style={styles.categoriesView}>
           <Text style={styles.categoriesText}>Chương trình khuyến mãi</Text>
         </View>
         <View>
@@ -212,13 +217,13 @@ export default function Home({ navigation }) {
               </View>
             )}
           />
-        </View>
+        </View> */}
 
         <View style={styles.categoriesView}>
           <Text style={styles.categoriesText}>Khu vực của bạn</Text>
         </View>
         <View style={{ width: SCREEN_WIDTH, paddingTop: 10 }}>
-          {localItem.map((item, index) => (
+          {listDrink.map((item, index) => (
             <View key={index} style={{ paddingBottom: 20 }}>
               <FoodCard
                 screenWidth={SCREEN_WIDTH * 0.95}
@@ -228,12 +233,25 @@ export default function Home({ navigation }) {
                 address={item.address}
                 averageReviews={item.averageReviews}
                 numberOfReview={item.numberOfReview}
+                onPressFoodCard={() => {
+                  navigation.navigate("InfoShopScreenHome", {
+                    image_url: item.image_url,
+                    name: item.name,
+                    averageReviews: item.averageReviews,
+                    numberOfReview: item.numberOfReview,
+                    farAway: item.farAway,
+                    dinkType: item.dinkType,
+                    productData: item.productData,
+                    location: item.location,
+                    courier: item.courier,
+                  });
+                }}
               />
             </View>
           ))}
         </View>
       </ScrollView>
-      {activeTab === "Delivery" ? (
+      {/* {activeTab === "Delivery" ? (
         <View style={styles.floatButton}>
           <TouchableOpacity
             onPress={() => {
@@ -246,7 +264,17 @@ export default function Home({ navigation }) {
         </View>
       ) : (
         <></>
-      )}
+      )} */}
+      <View style={styles.floatButton}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("MapScreen");
+          }}
+        >
+          <Icon name="place" type="material" size={32} color={colors.red} />
+          <Text style={{ color: colors.grey2 }}>Bản đồ</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

@@ -6,9 +6,6 @@ import { Icon } from "@rneui/base";
 export default function FoodCard({
   onPressFoodCard,
   name,
-  deliveryAvailable,
-  discountAvailable,
-  discountPercent,
   numberOfReview,
   address,
   farAway,
@@ -17,7 +14,7 @@ export default function FoodCard({
   screenWidth,
 }) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={onPressFoodCard}>
       <View style={{ ...styles.cardView, width: screenWidth }}>
         <Image
           style={{ ...styles.image, width: screenWidth }}
@@ -40,7 +37,7 @@ export default function FoodCard({
                   marginTop: 3,
                 }}
               />
-              <Text style={styles.min}>{farAway} Min</Text>
+              <Text style={styles.min}>{farAway} Phút</Text>
             </View>
 
             <View style={{ flex: 9, flexDirection: "row" }}>
@@ -52,7 +49,7 @@ export default function FoodCard({
 
       <View style={styles.review}>
         <Text style={styles.average}>{averageReviews}</Text>
-        <Text style={styles.numberOfReview}>{numberOfReview} reviews</Text>
+        <Text style={styles.numberOfReview}>{numberOfReview} Đánh giá</Text>
       </View>
     </TouchableOpacity>
   );

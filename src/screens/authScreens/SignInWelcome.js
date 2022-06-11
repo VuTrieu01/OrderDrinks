@@ -1,10 +1,32 @@
 import { View, Text, StyleSheet, Image } from "react-native";
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { colors, parameters } from "../../global/styles";
 import Swiper from "react-native-swiper";
 import { Button } from "@rneui/base";
+import { SignInContext } from "../../contexts/authContext";
+import { auth } from "../../../firebase";
 
 export default function SignInWelcome({ navigation }) {
+  const { dispatchSignedIn } = useContext(SignInContext);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatchSignedIn({
+          type: "UPDATE_SIGN_IN",
+          payload: { userToken: "signed-in" },
+        });
+      } else {
+        dispatchSignedIn({
+          type: "UPDATE_SIGN_IN",
+          payload: { userToken: null },
+        });
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
     <View
       style={{
@@ -22,12 +44,7 @@ export default function SignInWelcome({ navigation }) {
         <Text
           style={{ fontSize: 26, color: colors.buttons, fontWeight: "bold" }}
         >
-          KHÁM PHÁ CÁC QUÁN CÀ PHÊ
-        </Text>
-        <Text
-          style={{ fontSize: 26, color: colors.buttons, fontWeight: "bold" }}
-        >
-          TRONG KHU VỰC CỦA BẠN
+          ORDER DRINKS
         </Text>
       </View>
       <View style={{ flex: 4, justifyContent: "center" }}>
@@ -82,6 +99,9 @@ export default function SignInWelcome({ navigation }) {
           title="Đăng kí"
           buttonStyle={styles.createButton}
           titleStyle={styles.titleButton}
+          onPress={() => {
+            navigation.navigate("SignUpScreen");
+          }}
         />
       </View>
     </View>

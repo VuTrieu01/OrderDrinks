@@ -1,41 +1,35 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
 import SmallMenuCard from "../../components/SmallMenuCard";
 import { colors } from "../../global/styles";
-import { localItem } from "../../global/data";
 
-export default function SmallMenu() {
+export default function SmallMenu({ navigation, productData }) {
+  const itemList = productData.filter((item) => item.type.includes("Trà"));
+
   return (
     <View style={styles.container}>
       <View style={styles.view}>
         <FlatList
           style={{ backgroundColor: colors.cardBackground }}
-          data={localItem}
+          data={itemList}
           keyExtractor={(_, index) => index}
           renderItem={({ item, index }) => (
-            <FlatList
-              key={index}
-              style={{ backgroundColor: colors.cardBackground }}
-              data={item.productData}
-              keyExtractor={(_, index) => index}
-              renderItem={({ item, index }) => (
-                <TouchableOpacity>
-                  <SmallMenuCard
-                    key={index}
-                    image={item.image}
-                    productName={item.name}
-                    price={item.price}
-                    productDetails={item.details}
-                  />
-                </TouchableOpacity>
-              )}
-            />
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
           )}
           showsVerticalScrollIndicator={false}
         />
@@ -44,12 +38,277 @@ export default function SmallMenu() {
   );
 }
 
-export const RouteSmallMenu1 = () => <View style={styles.scene1} />;
-export const RouteSmallMenu2 = () => <View style={styles.scene1} />;
-export const RouteSmallMenu3 = () => <View style={styles.scene1} />;
-export const RouteSmallMenu4 = () => <View style={styles.scene1} />;
-export const RouteSmallMenu5 = () => <View style={styles.scene1} />;
-export const RouteSmallMenu6 = () => <View style={styles.scene1} />;
+export const RouteSmallMenu1 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Sữa chua"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+export const RouteSmallMenu2 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Cà phê"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+export const RouteSmallMenu3 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Latte đá"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+export const RouteSmallMenu4 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Đá xay"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+export const RouteSmallMenu5 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Kem"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+
+export const RouteSmallMenu6 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) =>
+    item.type.includes("Nước ngọt")
+  );
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+export const RouteSmallMenu7 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Sinh tố"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
+export const RouteSmallMenu8 = ({ navigation, productData }) => {
+  const itemList = productData.filter((item) => item.type.includes("Nước ép"));
+  return (
+    <View style={styles.container}>
+      <View style={styles.view}>
+        <FlatList
+          style={{ backgroundColor: colors.cardBackground }}
+          data={itemList}
+          keyExtractor={(_, index) => index}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("PreferenceScreen", {
+                  name: item.name,
+                  price: item.price,
+                  image: item.image,
+                });
+              }}
+            >
+              <SmallMenuCard
+                key={index}
+                image={item.image}
+                productName={item.name}
+                price={item.price}
+              />
+            </TouchableOpacity>
+          )}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
