@@ -123,7 +123,7 @@ export default function SignInScreen({ navigation }) {
       <View style={{ alignItems: "center", marginVertical: 20 }}>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>Hoặc</Text>
       </View>
-      <View>
+      {/* <View>
         <SocialIcon
           title="Đăng nhập với Facebook"
           button
@@ -140,10 +140,9 @@ export default function SignInScreen({ navigation }) {
           style={styles.socialIcon}
           onPress={() => {}}
         />
-      </View>
+      </View> */}
       <View
         style={{
-          alignItems: "flex-end",
           marginHorizontal: 20,
           marginVertical: 10,
         }}
@@ -202,19 +201,19 @@ const styles = StyleSheet.create({
   },
 
   createButton: {
-    backgroundColor: "white",
+    backgroundColor: colors.cardBackground,
     alignContent: "center",
     justifyContent: "center",
     borderRadius: 12,
     borderWidth: 1,
     borderColor: "#0C713D",
-    height: 40,
+    height: 50,
     paddingHorizontal: 20,
-    paddingVertical: 5,
+    width: "100%",
   },
   titleButton: {
-    color: "#0C713D",
-    fontSize: 13,
+    color: colors.buttons,
+    fontSize: 20,
     fontWeight: "bold",
     alignItems: "center",
     justifyContent: "center",

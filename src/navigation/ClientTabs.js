@@ -47,7 +47,7 @@ export default function ClientTabs() {
         }}
       />
 
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="MyOrderScreen"
         component={MyOrderScreen}
         options={{
@@ -69,7 +69,7 @@ export default function ClientTabs() {
             <Icon name="person" type="material" color={color} size={size} />
           ),
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }

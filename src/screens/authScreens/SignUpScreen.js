@@ -12,7 +12,7 @@ const initialValues = {
   name: "",
   email: "",
   password: "",
-  password_again: "",
+  // password_again: "",
 };
 
 export default function SignUpScreen({ navigation }) {
@@ -133,7 +133,7 @@ export default function SignUpScreen({ navigation }) {
                 </Animatable.View>
               </View>
 
-              <View style={styles.view14}>
+              {/* <View style={styles.view14}>
                 <Animatable.View
                   animation={passFocus ? "fadeInRight" : "fadeInLeft"}
                   duration={400}
@@ -169,7 +169,7 @@ export default function SignUpScreen({ navigation }) {
                     style={{ marginRight: 10 }}
                   />
                 </Animatable.View>
-              </View>
+              </View> */}
 
               {/* <View style={styles.view15}>
                 <Text style={styles.text3}>
